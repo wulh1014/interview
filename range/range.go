@@ -12,15 +12,15 @@ func main() {
 		m[i] = &val
 		i++
 		/*
-		错误写法
-		output:
-		3 -> 3
-		0 -> 3
-		1 -> 3
-		2 -> 3
-		参考原因：
-		在编译期将原切片或者数组赋值给一个新变量 ha
-		for range 循环的时候会创建每个元素的副本，而不是元素的引用，所以&val取得都是变量val的地址，所以最后的到的值是3，所以输出都是3
+			错误写法
+			output:
+			3 -> 3
+			0 -> 3
+			1 -> 3
+			2 -> 3
+			参考原因：
+			在编译期将原切片或者数组赋值给一个新变量 ha
+			for range 循环的时候会创建每个元素的副本，而不是元素的引用，所以&val取得都是变量val的地址，所以最后赋的值是3，所以输出都是3
 		*/
 		// // 正确写法
 		// // m[key] = &a[index]
@@ -31,5 +31,14 @@ func main() {
 	for k, v := range m {
 		fmt.Println(k, "->", *v)
 	}
+
+	// arr := []int{1, 2, 3}
+	// newArr := []*int{}
+	// for i, _ := range arr {
+	// 	newArr = append(newArr, &arr[i])
+	// }
+	// for _, v := range newArr {
+	// 	fmt.Println(*v)
+	// }
 
 }
